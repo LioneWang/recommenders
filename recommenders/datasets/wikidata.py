@@ -11,7 +11,7 @@ from functools import lru_cache
 logger = logging.getLogger(__name__)
 
 
-WIKIDATA_API_URL = "https://www.wikidata.org/w/api.php"  # ← Wikidata API
+WIKIDATA_API_URL = "https://www.wikidata.org/w/api.php" 
 SESSION = None
 
 
@@ -98,9 +98,9 @@ def find_wikidata_id(name, limit=1, session=None):
         response_json = response.json()
         
         try:
-            search_results = response_json["search"]        # ✅ 不是["query"]["search"]
-            entity_id      = search_results[0]["id"]        # ✅ 不是["pageid"]
-            return entity_id                                # ✅ 直接返回，不需要第二步
+            search_results = response_json["search"]       
+            entity_id      = search_results[0]["id"]       
+            return entity_id                              
             
         except (KeyError, IndexError):
             logger.warning(f"Entity '{name}' not found (search)")
